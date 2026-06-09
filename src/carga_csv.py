@@ -1,20 +1,88 @@
+import os
+import pandas as pd
+
+DATA_PATH = "data"
+
+
 def cargar_csv(ruta):
-    #Carga un archivo CSV desde una ruta especificada y lo retorna como un DataFrame.
     """
-    Parámetros:
-    ruta (str): Ruta del archivo CSV a cargar.
+    Carga un archivo CSV desde una ruta especificada.
 
-    Retorna:
-    pandas.DataFrame: DataFrame con los datos del archivo si la carga es exitosa.
+    Parameters
+    ----------
+    ruta : str
+        Ruta del archivo CSV.
 
-    Manejo de errores:
-    - Si el archivo no se encuentra en la ruta especificada, se captura la excepción
-      FileNotFoundError y se muestra un mensaje informativo por consola.
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame cargado.
     """
-    import pandas as pd
+
     try:
-        # Intento de lectura del archivo CSV
         return pd.read_csv(ruta)
+
     except FileNotFoundError:
-        # Manejo del error en caso de que el archivo no exista
-        print("Archivo no encontrado")
+        raise FileNotFoundError(
+            f"No se encontró el archivo: {ruta}"
+        )
+
+
+def listar_csv():
+    """
+    Lista todos los archivos CSV disponibles
+    en la carpeta data.
+
+    Returns
+    -------
+    list[str]
+        Lista de archivos CSV.
+    """
+
+    return [
+        archivo
+        for archivo in os.listdir(DATA_PATH)
+        if archivo.endswith(".csv")
+    ]
+
+
+def seleccionar_csv():
+    """
+    Permite seleccionar un dataset desde consola.
+
+    Returns
+    -------
+    str
+        Ruta completa del archivo seleccionado.
+    """
+
+    archivos = listar_csv()
+
+    if not archivos:
+        raise FileNotFoundError(
+            "No se encontraron archivos CSV en la carpeta data."
+        )
+
+    print("\n=== DATASETS DISPONIBLES ===")
+
+    for i, archivo in enumerate(archivos, start=1):
+        print(f"{i}. {archivo}")
+
+    while True:
+        try:
+            opcion = int(
+                input("\nSeleccione un dataset: ")
+            )
+
+            if 1 <= opcion <= len(archivos):
+                return os.path.join(
+                    DATA_PATH,
+                    archivos[opcion - 1]
+                )
+
+            print("Opción inválida.")
+
+        except ValueError:
+            print(
+                "Ingrese un número válido."
+            )
