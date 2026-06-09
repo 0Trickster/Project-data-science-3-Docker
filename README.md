@@ -28,3 +28,10 @@ El sistema permite:
 - Docker
 
 ---
+
+## ⚠️ Consideraciones
+
+El docker debe ejecutarse de la siguiente manera:
+
+```bash
+docker run -it data-science-app
