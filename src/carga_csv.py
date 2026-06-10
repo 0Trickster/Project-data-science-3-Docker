@@ -1,7 +1,9 @@
 import os
 import pandas as pd
 
-DATA_PATH = "data"
+MODEL_PATH = r"models\random_forest_model.pkl"
+PREPROCESSOR_PATH = r"models\preprocessor.pkl"
+DATA_PATH = r"data"
 
 
 def cargar_csv(ruta):

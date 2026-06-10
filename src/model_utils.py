@@ -2,31 +2,9 @@ import joblib
 import pandas as pd
 import os
 
-MODEL_PATH = "models/random_forest_model.pkl"
-PREPROCESSOR_PATH = "models/preprocessor.pkl"
-DATA_PATH = "data"
-
-def cargar_modelo():
-    """
-    Carga el modelo Random Forest entrenado.
-    """
-    return joblib.load(MODEL_PATH)
-
-
-def cargar_preprocesador():
-    """
-    Carga el pipeline de preprocesamiento.
-    """
-    return joblib.load(PREPROCESSOR_PATH)
-
-
-import joblib
-import pandas as pd
-import os
-
-MODEL_PATH = "models/random_forest_model.pkl"
-PREPROCESSOR_PATH = "models/preprocessor.pkl"
-DATA_PATH = "data"
+MODEL_PATH = r"models\random_forest_model.pkl"
+PREPROCESSOR_PATH = r"models\preprocessor.pkl"
+DATA_PATH = r"data"
 
 
 def cargar_modelo():
