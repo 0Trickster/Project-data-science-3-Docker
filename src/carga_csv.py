@@ -1,8 +1,6 @@
 import os
 import pandas as pd
 
-MODEL_PATH = r"models\random_forest_model.pkl"
-PREPROCESSOR_PATH = r"models\preprocessor.pkl"
 DATA_PATH = r"data"
 
 
@@ -67,13 +65,18 @@ def seleccionar_csv():
 
     print("\n=== DATASETS DISPONIBLES ===")
 
-    for i, archivo in enumerate(archivos, start=1):
+    for i, archivo in enumerate(
+        archivos,
+        start=1
+    ):
         print(f"{i}. {archivo}")
 
     while True:
         try:
             opcion = int(
-                input("\nSeleccione un dataset: ")
+                input(
+                    "\nSeleccione un dataset: "
+                )
             )
 
             if 1 <= opcion <= len(archivos):
