@@ -32,17 +32,6 @@ def root():
     }
 
 
-@app.get("/health")
-def health():
-    """
-    Verifica que la API esté operativa.
-    """
-
-    return {
-        "status": "healthy"
-    }
-
-
 @app.post("/predict")
 def predict(student: StudentRequest):
     """
