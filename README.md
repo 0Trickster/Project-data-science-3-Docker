@@ -122,20 +122,6 @@ Verifica que la API esté operativa.
 
 ---
 
-## GET /health
-
-Health Check de la aplicación.
-
-### Respuesta
-
-```json
-{
-  "status": "healthy"
-}
-```
-
----
-
 ## POST /predict
 
 Realiza una predicción individual.
